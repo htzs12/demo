@@ -1,0 +1,80 @@
+body,div,img,a,input,ul,li{margin: 0px;padding: 0px;border: 0px none;}
+
+body{background-color:lightblue;}
+
+#main{width:600px;height:600px;margin: 60px auto;padding: 40px;border: 1px white solid;border-radius: 10px; color: white; background-color: #17293D; box-shadow: 0px 0px 10px white; position: relative; overflow: hidden;}
+p{font-size: 12px;}
+#main >p:first-child{font-size: 16px; color:white; font-weight: bold;}
+#main >p:first-child >span:first-child{ font-size: 12px; color: orange; font-weight: normal; position: absolute;top:-16px;left: 150px; transition: 2s;}
+form >div:nth-child(7){border: 1px #ddd solid;width: 160px;height:160px;margin: 0px 52px;}
+form >div:nth-child(7) >img{width:160px;height: 160px;}
+select{width:56px;height:20px;font-size: 12px;color: gray; margin: 0px 0px 0px 5px;}
+select:first-child{margin: 0px 0px 0px 20px;}
+#regday{margin: 0px 20px 0px 5px;}
+input[type="text"]{width:160px;height:20px;border: 1px #aaa solid;padding: 0px 8px;margin:0px 20px;}
+input[type="file"]{width:60px; height:18px;font-size: 12px;margin: 0px 140px 0px 20px;}
+input[type="submit"]{width:80px;height:24px;background-color: white;font-size: 12px;line-height: 18px;margin:10px 40px;border: 1px #aaa solid;border-radius: 3px;}
+
+#reg{width:400px;height:500px; margin: 40px auto;}
+#reg >p{color:#ddd; font-size: 14px;}
+#reg >p >span{color: #D9523E; font-size: 12px;}
+#reg >p:last-child >span{color:orange;}
+
+#mod{width:400px;height:500px; margin: 40px auto;}
+#mod >p{color:#ddd; font-size: 14px;}
+#mod >p >span{color: #D9523E; font-size: 12px;}
+#mod >p:last-child >span{color:orange;}
+
+
+
+/* 排序 */
+#filter{width:500px;height:60px; position: absolute; top:100px;left: 60px; overflow: hidden;}
+#filter >ul{list-style: none;}
+#filter >ul >li{width:60px;height:48px;margin:0px 20px;line-height:48px; float: left;}
+#filter >ul >li:last-child{width:240px; font-size: 12px; color: orangered; line-height: 24px; position: absolute;top: -80px;left: 180px; transition: 2s;}
+.byChoose{width:48px;height:20px; border: 1px #ddd solid; color:darkblue; background-color: white; text-align: center;font-size: 12px;line-height: 18px; border-radius: 5px;}
+.byChoose:hover{cursor: pointer;}
+
+
+/* 查询显示信息区域 */
+.showUser{width:540px;height:450px; position: absolute;top:150px;left: 60px;}
+.showUser >ul{width:540px;height:49px; list-style: none;}
+.showUser >ul >li{height:49px; float: left; font-size: 12px; text-align: center; line-height: 60px; border-bottom: 1px #ddd dashed;}
+
+.showUser >ul >li:first-child{width:80px;}
+.showUser >ul >li:nth-child(2){width:100px;}
+.showUser >ul >li:nth-child(3){width:100px;}
+.showUser >ul >li:nth-child(4){width:80px;}
+
+.showTips >li:nth-child(5){width:60px; text-align: right;}
+.showTips >li:nth-child(6){width:60px; text-align: left;}
+.informations >li:nth-child(5){width:60px;text-align: right;}
+.informations >li:nth-child(6){width:60px;text-align: left;}
+
+.infoHead >li:last-child{width:120px;}
+
+.showUser >ul >li >input{width: 40px;height: 20px; margin: 0px 4px; color: darkred; border: 1px #ddd solid; border-radius: 3px; font-size: 12px; line-height: 20px; text-align: center; background-color: white;}
+.showUser >ul >li >input:hover{cursor: pointer;}
+
+
+.showTips >li{color: orange;}
+
+/* 分页区域 */
+#transPage{width:150px;height:20px; position: absolute; right: 60px; bottom: 20px;}
+.pages{width:150px;height:20px; list-style: none; position: relative;}
+.pages >li{height:20px;float: left;font-size: 12px; line-height: 20px;text-align: center;}
+.pages >li >input{width:16px; height: 16px; border: 1px gray solid; background-color: white;}
+.pages >li >input:hover{cursor: pointer;}
+.pages >li >span{width:16px;height: 12px;display: inline-block;}
+.pages >li:first-child{width:20px;}
+.pages >li:nth-child(2){width: 64px;}
+.pages >li:nth-child(3){width: 20px;}
+.pages >li:nth-child(4){width: 40px;margin: 0px 0px 0px 6px;}
+
+
+.tips{width:160px; height:60px; font-size: 12px; line-height: 20px; display: block;color: orangered; position: absolute;top:436px;right: -170px; transition: 3s;}
+.spetip{ color:orangered; font-size: 12px; font-weight: normal; position: absolute;top:-20px;left: 136px; transition: 2s;}
+
+.tips3{width:124px;height:60px;font-size: 12px; line-height: 20px; display: block; color: orange; position: absolute; top:160px;right: -140px; transition: 2s;}
+.tips4{width:124px;height:80px;font-size: 12px; line-height: 20px;display: block; color: orange; position: absolute; top:240px;right: -140px;transition: 2s;}
+.tips5{width:270px;height:40px;font-size: 12px; line-height: 20px;display: block; color: orangered; position: absolute; bottom:-45px;left: 60px;transition: 2s;}

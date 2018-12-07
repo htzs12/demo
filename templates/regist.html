@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link href="{% static 'css/main.css' %}" type="text/css" rel="stylesheet" />
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+    <div id="main">
+        <p>注册界面<span>(考核点 ①：数据库信息添加)</span></p>
+        <form id="reg" method="post" action="{% url 'demo_register:register' %}" enctype="multipart/form-data">
+            <p>姓 名<input type="text" id="regusername" name="username" value="" /><span>dataType: varchar</span></p>
+            <p>密 码<input type="text" id="regpassword" name="password" value="" /><span>dataType: varchar</span></p>
+            <p>生 日<input type="date" name="birthday"><span>dataType: datetime</span></p>
+            <p>电 话<input type="text" id="regphone" name="mobile" value="" /><span>dataType: char(11)</span></p>
+            <p>体 重<input type="text" id="regweight" name="width" value="" /><span>dataType: double</span></p>
+            <p>身 高<input type="text" id="regheight" name="height" value="" /><span>dataType: int</span></p>
+            <div>
+                <img src="" class="image1" alt="">
+            </div>
+            <p>头像<input type="file" id="image-btn" name="image" value=" " /><span>dataType: blob</span></p>
+            <p><input type="submit" id="regsub" name="regsub" value="提 交"><span>"点击提交，完成数据添加，跳转至 index "</span></p>
+            {% csrf_token %}
+        </form>
+        <span class="tips">附加考核点 ①：同步处理<br />点击选择文件，完成头像上传<br />即同步显示在预留头像框内</span>
+    </div>
+</body>
+{##}
+{#<script>#}
+{##}
+{#    $('input[type="file"]').on('change',doUpload);#}
+{#    function doUpload() {#}
+{#        var image = this.file[0];#}
+{#        $.ajax({#}
+{#            type: 'post',#}
+{#            url:'/demo_register/image_demo/',#}
+{#            data: {#}
+{#                'image':image#}
+{#            },#}
+{#            success:function () {#}
+{#                alert('success');#}
+{#            }#}
+{#        })#}
+{#    }#}
+
+
+{#    $(function () {#}
+{#        $('#regsub').click(function () {#}
+{#            var username = $('input[name="username"]').val();#}
+{#            var password = $('input[name="password"]').val();#}
+{#            var birthday = $('input[name="birthday"]').val();#}
+{#            var mobile = $('input[name="mobile"]').val();#}
+{#            var width = $('input[name="width"]').val();#}
+{#            var height = $('input[name="height"]').val();#}
+{#            var image = $('input[name="image"]').file[0];#}
+{##}
+{#            $.ajax({#}
+{#                type:'post',#}
+{#                url:'/demo_register/register/',#}
+{#                data:{#}
+{#                    'username':username,#}
+{#                    'password':password,#}
+{#                    'birthday':birthday,#}
+{#                    'phone':mobile,#}
+{#                    'width':width,#}
+{#                    'height':height,#}
+{#                    'image':image#}
+{#                },#}
+{#                success:function (data) {#}
+{#                    if (data.status == 'success') {#}
+{#                        alert('注册成功');#}
+{#                    }else {#}
+{#                        alert('注册失败,请检查输入');#}
+{#                    }#}
+{#                },#}
+{#            });#}
+{##}
+{#        });#}
+{#    });#}
+{##}
+{##}
+{#</script>#}
+
+</html>

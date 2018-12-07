@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改</title>
+    <link href="css/main.css" type="text/css" rel="stylesheet" />
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="main">
+    <form id="reg" method="post" action="{% url 'demo_register:modify' %}" enctype="multipart/form-data">
+    <p>修改界面<span>(考核点 ③：数据库信息修改)</span><br /><span class="spetip">特殊说明：进入该页面，下表单中，须存在有欲修改用户的信息</span></p>
+        <p>姓 名<input type="text" id="regusername" name="username" value="" /><span>dataType: varchar</span></p>
+            <p>密 码<input type="text" id="regpassword" name="password" value="" /><span>dataType: varchar</span></p>
+            <p>生 日<input type="date" name="birthday"><span>dataType: datetime</span></p>
+            <p>电 话<input type="text" id="regphone" name="mobile" value="" /><span>dataType: char(11)</span></p>
+            <p>体 重<input type="text" id="regweight" name="width" value="" /><span>dataType: double</span></p>
+            <p>身 高<input type="text" id="regheight" name="height" value="" /><span>dataType: int</span></p>
+            <p>头像<input type="file" id="image-btn" name="image" value=" " /><span>dataType: blob</span></p>
+        <p><input type="submit" id="modsub" name="modsub" value="修 改"><span>"修改完成后，跳转至 index "</span></p>
+
+</form>
+</div>
+</body>
+
+{#<script>#}
+{#    $(function () {#}
+{#        $('#modsub').click(function () {#}
+{#            var username = $('input[name="username"]').val();#}
+{#            var password = $('input[name="password"]').val();#}
+{#            var birthday = $('input[name="birthday"]').val();#}
+{#            var mobile = $('input[name="mobile"]').val();#}
+{#            var width = $('input[name="width"]').val();#}
+{#            var height = $('input[name="height"]').val();#}
+{#            var image = $('input[name="image"]').file[0];#}
+{##}
+{#            $.ajax({#}
+{#                type:'post',#}
+{#                url:'/demo_register/modify/',#}
+{#                data:{#}
+{#                    'username':username,#}
+{#                    'password':password,#}
+{#                    'birthday':birthday,#}
+{#                    'phone':mobile,#}
+{#                    'width':width,#}
+{#                    'height':height,#}
+{#                    'image':image#}
+{#                },#}
+{##}
+{#                success:function (data) {#}
+{#                    if (data.status == 'success') {#}
+{#                        alert('注册成功');#}
+{#                    }else {#}
+{#                        alert('注册失败,请检查输入');#}
+{#                    }#}
+{#                },#}
+{#            });#}
+{##}
+{#        });#}
+{#    });#}
+{##}
+{#</script>#}
+
+</html>

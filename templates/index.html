@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link href="{% static 'css/main.css' %}" type="text/css" rel="stylesheet"/>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+<div id="main">
+    <p>显示界面<span>(考核点 ②：数据库信息查询[无条件全查询])</span></p>
+    {#    <form id="filter" method="get" action="" onclick="return false">#}
+    {#        <ul>#}
+    {#            <li><input type="button" id="Birthday" class="byChoose" name="byBirthday" value="生 日" /></li>#}
+    {#            <li><input type="button" id="byHeight" class="byChoose" name="byHeight" value="身 高" /></li>#}
+    {#            <li><a href="{% url 'index' %}?sort=birthday"></a></li>#}
+    {#            <li><a href="{% url 'index' %}?sort=height"></a></li>#}
+    {#            <li>附加考核点 ②：实现排序功能；同一个按钮第一次点击顺序排序，第二次点击时逆序排序</li>#}
+    {#        </ul>#}
+    {#    </form>#}
+    <p>附加考核点 ②：实现排序功能；同一个按钮第一次点击顺序排序，第二次点击时逆序排序</p>
+    <a href="{% url 'index' %}?sort=birthday">生日</a>
+    <a href="{% url 'index' %}?sort=height">身高</a>
+
+    <div class="showUser">
+        <ul class="infoHead">
+            <li>姓名</li>
+            <li>生日</li>
+            <li>手机</li>
+            <li>身高</li>
+            <li>操作</li>
+        </ul>
+        <!-- 示例显示区域 -->
+        {% for demo in page_demo.object_list %}
+            <ul class="showTips">
+                <li>{{ demo.username }}</li>
+                <li>{{ demo.birthday }}</li>
+                <li>{{ demo.mobile }}</li>
+                <li>{{ demo.height }}</li>
+                <li><a href="{% url 'demo_register:modify' %}"><input type="button" id="modifytip" class="modify"
+                                                                      name="modifytip" value="修 改"/></a></li>
+                <li><input type="button" id='del-btn' class="delete" value="删除" data-id="{{ demo.id }}"/></li>
+            </ul>
+        {% endfor %}
+
+        <!-- 以下部分为实际显示区域
+        <ul class="informations">
+            <li></li><li></li><li></li><li></li>
+            <li><input type="button" id="modify1" class="modify" name="modify2" value="修 改" /></li>
+            <li><input type="button" id="delete1" class="delete" name="delete1" value="删 除" /></li>
+        </ul>
+        -->
+    </div>
+
+
+    <span class="tips3">"考核点 ③：数据修改点击修改按钮会进入 modify "</span>
+    <span class="tips4">"考核点 ④：数据删除点击删除按钮会删除该条数据记录，同时刷新 index，重新显示"</span>
+    <span class="tips5">"附加考核点 ③：分页显示，页面最多显示5条数据记录，分页显示，实现页面前进后退跳转等功能"</span>
+
+
+</div>
+
+<div>
+    <div class="">
+        {% if page_demo.has_previous %}
+            <a href="{% url 'index' %}?page={{ page_demo.previous_page_number }}">上一页</a>
+        {% else %}
+            <a href="javascript:void(0);">上一页</a>
+        {% endif %}
+
+        {% if left_has_more %}
+            <a href="{% url 'index' %}?page=1">1</a>
+            <a href="javascript:void(0);">...</a>
+        {% endif %}
+
+        {# 左边页码 #}
+
+        {% for left_page in left_pages %}
+            <a href="{% url 'index' %}?page={{ left_page }}">{{ left_page }}</a>
+        {% endfor %}
+
+        {# 当前页面 #}
+
+        <a href="{% url 'index' %}?page={{ current_page }}"
+           class="active">{{ current_page }}</a>
+
+        {# 右边的页码 #}
+
+        {% for right_page in right_pages %}
+            <a href="{% url 'index' %}?page={{ right_page }}">{{ right_page }}</a>
+        {% endfor %}
+
+        {% if right_has_more %}
+            <a href="javascript:void(0);">...</a>
+            <a href="{% url 'index' %}?page={{ num_pages }}">{{ num_pages }}</a>
+        {% endif %}
+
+        {% if page_demo.has_next %}
+            <a href="{% url 'index' %}?page={{ page_demo.next_page_number }}">下一页</a>
+        {% else %}
+            <a href="javascript:void(0);">下一页</a>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+
+<script>
+    $(function () {
+        var deleteBtns = $('#del-btn');
+        deleteBtns.click(function () {
+            var btn = $(this);
+            var del = btn.attr('data-id');
+            console.log(del);
+            $.ajax({
+                type: 'post',
+                url: '{% url "demo_register:del_demo" %}',
+                data: {
+                    'del': del,
+                },
+                success: function () {
+                    alert('删除成功');
+                    window.location.reload();
+                },
+            });
+        });
+    });
+</script>
+
+{#<script>#}
+{#    $(function () {#}
+{#        $('#Birthday').click(function () {#}
+{#            var del = $("input[name='del']").val();#}
+{#            console.log(del);#}
+{#            $.ajax({#}
+{#                type:'post',#}
+{#                url:'{% url "demo_register:del_demo" %}',#}
+{#                data:{#}
+{#                    'del':del,#}
+{#                },#}
+{#                success:function () {#}
+{#                        alert('删除成功');#}
+{#                        window.location.reload();#}
+{#                },#}
+{#            });#}
+{##}
+{#        });#}
+{#    });#}
+{#</script>#}
+
+
+</html>
